@@ -3,15 +3,26 @@ ERROR --> sun.security.provider.certpath.SunCertPathBuilderException: unable to 
 Good informations contained here -- https://docs.oracle.com/cd/E35976_01/server.740/es_admin/src/tadm_ssl_convert_pem_to_jks.html
                                     https://medium.com/@codebyamir/the-java-developers-guide-to-ssl-certificates-b78142b3a0fc
 
-Actual solution guide -- https://stackoverflow.com/questions/2138940/import-pem-into-java-key-store
+Actual solution guide -- configure RestTenpmlate bean by using spring's implementation then turn off certificate verification in the RestTemplate
+
+Possible solution guide -- https://stackoverflow.com/questions/53544927/how-do-i-import-ssl-certifcate-pem-file-into-jre-cacerts-file-on-mac
 
         Executed command
-            first command -- openssl x509 -outform der -in pencom-gov-ng.pem -out pencom-gov-ng.der
-            second command -- keytool -import -alias pencomdre-alias -keystore cacerts -file pencom-gov-ng.der 
+            command -- 
+            sudo keytool -import -v -trustcacerts -alias pencomdrealias -file /home/revoltcode/Desktop/PENCOM-DRA-Test-Dataset/pencom-gov-ng.pem 
+            -keystore cacerts
+
 
 
         Util commands
             list all certificates in the truststore --> keytool -list -keystore $JAVA_HOME/lib/security/cacerts
             find a particular certificate --> keytool -list -keystore $JAVA_HOME/lib/security/cacerts | grep -B1 -i DE:93
+            delte a certificate in keystore(cacerts file) via the alias name --> 
+                    
+                    Command syntax: sudo keytool -delete -noprompt -alias aliasName  -keystore keystoreFileName -storepass changeit
+
+                    sudo keytool -delete -noprompt -alias serveralias  -keystore cacerts -storepass changeit
+
 
 other relevant references -- https://medium.com/expedia-group-tech/how-to-import-public-certificates-into-javas-truststore-from-a-browser-a35e49a806dc
+https://stackoverflow.com/questions/2138940/import-pem-into-java-key-store
