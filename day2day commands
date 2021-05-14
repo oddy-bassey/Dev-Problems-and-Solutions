@@ -3,3 +3,12 @@ commad to check os version - cat /etc/os-release
 
 commad to open hosts file to edit or add route in pluma - pluma /etc/hosts
 
+command to create a file - touch filename
+
+command to delete a file - rm -i filename
+
+command to create a directory - mkdir directoryName
+
+command to delete a directory - rm -r directoryName
+
+
