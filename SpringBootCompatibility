@@ -1,0 +1,15 @@
+Reference link --> https://spring.io/projects/spring-cloud#overview
+NOTE:
+Spring Cloud Dependencies version (2020.0.X) is compatible with Spring Boot version (2.4.X)
+
+sample dependency:
+
+<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-dependencies</artifactId>
+    <version>2020.0.2</version>
+    <type>pom</type>
+    <scope>runtime</scope>
+</dependency>
+
